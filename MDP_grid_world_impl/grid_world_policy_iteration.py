@@ -22,6 +22,7 @@ def grid_world_policy_iteration(row, col, goal, traps, walls):
                 if (0 <= new_i < row) and (0 <= new_j < col) and (new_i,new_j) not in walls :
                     act_candidate.append(act)
             policys[i][j] = act_candidate[np.random.randint(len(act_candidate))]
+    print("초기화된 정책")
     print_policys(policys)
     step = 0
     while True:
@@ -71,8 +72,9 @@ def grid_world_policy_iteration(row, col, goal, traps, walls):
         if pre_policys == policys:
             break
         print(f"{step}번째 반복")
+        print(f"개선 전 정책 측정 \n{rewards}")
+        print("개선 된 정책")
         print_policys(policys)
-        print(rewards)
         
              
 def print_policys(policys):
